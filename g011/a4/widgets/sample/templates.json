@@ -1,0 +1,19 @@
+
+{
+	"baseHtml": [
+		"<div id='chooser'>",
+			"<label>Subject: <input type='text' id='subject' size='5'></label>",
+			"<label>Catalog: <input type='text' id='catalog' size='5'/></label>",
+			"<button id='search'>Go</button>",
+		"</div>",
+		"<div id='cDescr'></div>"
+	],
+
+	"courseD": [
+		"<h4>{{course.subject}} {{course.catalog_number}}: {{course.title}}</h4>",
+		"<p>{{course.description}}</p>"
+	],
+
+	"error": "<p>Course not found.</p>"
+
+}

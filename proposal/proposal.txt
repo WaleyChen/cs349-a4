@@ -1,0 +1,59 @@
+Course Checklist Widget
+*Description*
+The Course Checklist Widget is an interactive checklist to track a student's progression in 
+completing a degree plan. It will be similar to the checklists UW's Faculty of Mathematics
+offers on their website.
+e.g. - https://cs.uwaterloo.ca/current/programs/require/2013-2014/bcs_bus.html
+
+For the widget, the degree plan we'll be using is the Bachelor of CS - Business Option Plan.
+
+*Interaction*
+Users will be able to plan how they will complete their degree by indicating the courses they will
+take and which term they plan to take the courses. 
+
+In addition, the checklist will then 
+1. indicate whether the prerequisites are met for each course chosen
+2. indicate whether each course chosen is available during the term the student plans to take it
+3. based on the information given, determine when the student will graduate
+
+*Challenges*
+- Challenge #1 - Filling the Checklist and Calculating When the Student Graduates
+The data for the courses taken & scheduled by the student and the grades of the student will be 
+provided by the CS 349 academic web service -
+https://cs349.student.cs.uwaterloo.ca:9410/api/v1/student/stdGrades/USERID .
+
+Parsing this data, our widget will fill the corresponding checkboxes on its checklist.
+
+The widget will then encourage the student to input the courses they plan to take and when
+they plan to take them. When all the requirements of the checklist are/will be met, the widget 
+can then determine the term when the student graduates by the last study term indicated on 
+the checklist.
+
+If the checklist is not completed, a rough estimate of the graduation date can still be calculated.
+The widget can divide the number of remaining courses required by the average number of courses 
+taken per a study term by the student and ask for how many co-op/off terms the student plans to take.
+
+Graduation Date = current term + 
+                            # of courses remaining / # of courses taken per a study term + 
+                            # of co-op/off terms
+
+The rough estimate can also be made smarter by suggesting
+to the student to take online courses during their co-op/off terms thereby potentially allowing the
+student to graduate earlier.
+
+Challenge #2 - Checking Prerequisites
+To indicate whether the prerequisites are met for each course chosen,
+the widget will retreive the prequisites of the courses chosen from the UW Open Data API web service:
+https://github.com/uWaterloo/api-documentation/blob/master/v2/courses/subject_catalog_number_prerequisites.md .
+The widget will then check whether the student has met those prerequisites for each course chosen.
+
+- Challenge #3 - Checking Terms Offered
+To indicate whether each course chosen is available during the term the student plans to take it,
+the widget will retreive the terms offered of the courses chosen from the UW Open Data API web service:
+https://github.com/uWaterloo/api-documentation/blob/master/v2/courses/course_id.md .
+The widget will then check for each course chosen that the course is offered for the term the student
+plans to take it.
+
+- Challenge #4 - Compacting the Checklist to the Size of a Widget
+The checklist is quite large so compacting the checklist into the size of a widget without 
+compromising aesthetics and usability will be challenging. It will need to be well though out.

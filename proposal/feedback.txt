@@ -1,0 +1,7 @@
+I think this project is very reasonable in scope and highly useful, but the proposal could be improved. In your sketch, it is unclear where the expected term of graduation can be found. What response from the interface does the user get from checking a box? Does it change the output in any way? If the interaction is primarily checking boxes and selecting dropdowns that don't have any feedback from the interface, it may be useful to add something else to demonstrate that you can handle events from user input.
+
+Furthermore, it would be good if you could comment on the technical challenges you expect to face. For example, how will you predict their graduation term? Where is the data coming from, and will the checklist do any validity checking (i.e. for course prerequisites)?
+
+Feel free to resubmit the proposal. However, you are safe to begin working on your project based on this feedback. Cleaning up the proposal will just increase its portion of the mark.
+
+17/25
