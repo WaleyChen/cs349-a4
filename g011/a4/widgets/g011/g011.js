@@ -1,10 +1,16 @@
-function g011(userid, htmlId) {
+function g011(userId, htmlId) {
   "use strict";
   var templates = {};
 
   var model = {
     views: [],
     course: {},
+    courses: {},
+    csCourses: {},
+    failedCoures: {},
+    mathCourses: {}
+
+    // ----- VIEW-RELATED -----
 
     /**
      * Add a new view to be notified when the model changes.
@@ -23,6 +29,48 @@ function g011(userid, htmlId) {
         this.views[i](msg);
       }
     },
+
+    //----- CORE -----
+    // load information about the courses the student has taken
+    loadCourses: function() {
+      var that = this;
+
+      $.getJSON("https://cs349.student.cs.uwaterloo.ca:9410/api/v1/student/stdGrades/" + userId,
+        function (d) {
+
+          var courses = d.result.courses;
+          var courseCode;
+
+          for (var i = 0; i < courses.length; i++) {
+            courseCode = courses[i].subjectCode + courses[i].catalog;
+            console.log(courseCode);
+
+            if (courses[i].courseGrade == "WF") {
+              that.failedCoures[courseCode] = {};
+            } else if (
+              courses[i].subjectCode == "CS" || 
+              courseCode == "CO487" || 
+              courseCode == "STAT440"
+            ) {
+              that.csCourses[courseCode] = {};
+            } else if (courses[i].subjectCode == "MATH" || courses[i].subjectCode == "status") {
+              that.mathCourses[courseCode] = {};
+            }
+            
+            that.courses[courseCode] = {};
+          }
+
+        }).fail(function( jqxhr, textStatus, error ) {
+          var err = textStatus + ", " + error;
+          console.log( "Request Failed: " + err );
+        }
+      );
+
+    },
+
+    // create data structures for courses
+    // load prerequisites of a course
+    // load terms offered of a course
 
     loadCourseData: function (subject, catalog) {
       var that = this;
@@ -57,6 +105,8 @@ function g011(userid, htmlId) {
     initView: function () {
       console.log("Initializing courseView");
 
+      model.loadCourses();
+
       /*
        * Set the controller for the "Go" button.
        * Get the subject and catalog from the input fields and
@@ -78,7 +128,7 @@ function g011(userid, htmlId) {
   /*
    * Initialize the widget.
    */
-  console.log("Initializing g011(" + userid + ", " + htmlId + ")");
+  console.log("Initializing g011(" + userId + ", " + htmlId + ")");
   portal.loadTemplates("widgets/g011/templates.json",
     function (t) {
       templates = t;
