@@ -86,3 +86,16 @@ function g011(userid, htmlId) {
       courseView.initView();
     });
 }
+
+$(function () {
+  $('#accordion label').append("<div class='term'><button class='btn btn-sm dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown'>Term<span class='caret'></span></button><ul class='dropdown-menu pull-right'><li><a href='#'>Fall</a></li><li><a href='#'>Winter</a></li><li><a href='#'>Spring</a></li></ul><input type='text' class='form-control' placeholder='year'></div>");
+
+  $('#pop').popover({
+    html: true,
+    trigger: 'hover', 
+    placement: 'right',
+    content: function() {
+      return $('#mathaddnote').html();
+    }
+  });
+});

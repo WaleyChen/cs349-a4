@@ -25,3 +25,7 @@
 #estimate li {
 	margin-bottom: 10px;
 }
+
+.term {
+	display: inline;
+}
