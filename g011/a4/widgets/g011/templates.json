@@ -254,7 +254,7 @@
     ],
 
     "header": [
-        "<div class=\"page-header\">",
+        "<div class=\"page-header well\">",
             "<h4>2013-2014 BCS/Business Option Checklist</h4>",
             "<ol>",
                 "<li>Under <a href=\"#required\">Required Courses</a>, fill in forty unique courses (20 units) that you have passed but not excluded.</li>",
