@@ -8,7 +8,6 @@ github
 - co-op off terms should not be read-only
 - put a question mark beside "estimated graduation date" to explain how it works
 - have to whole top accordion be clickable
-- have the accordions be open by default
 
 front end
 - expandable checklists
