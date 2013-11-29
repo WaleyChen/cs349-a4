@@ -8,7 +8,7 @@ function g011(userId, htmlId) {
     courses: {},
     csCourses: {},
     failedCoures: {},
-    mathCourses: {}
+    mathCourses: {},
 
     // ----- VIEW-RELATED -----
 
@@ -40,24 +40,27 @@ function g011(userId, htmlId) {
 
           var courses = d.result.courses;
           var courseCode;
+          var courseCodeSelector;
 
           for (var i = 0; i < courses.length; i++) {
             courseCode = courses[i].subjectCode + courses[i].catalog;
-            console.log(courseCode);
+            courseCodeSelector = "#g011 ." + courseCode;
+            $(courseCodeSelector).prop('checked', true).attr("disabled", true);
+          //   console.log(courseCode);
 
-            if (courses[i].courseGrade == "WF") {
-              that.failedCoures[courseCode] = {};
-            } else if (
-              courses[i].subjectCode == "CS" || 
-              courseCode == "CO487" || 
-              courseCode == "STAT440"
-            ) {
-              that.csCourses[courseCode] = {};
-            } else if (courses[i].subjectCode == "MATH" || courses[i].subjectCode == "status") {
-              that.mathCourses[courseCode] = {};
-            }
+          //   if (courses[i].courseGrade == "WF") {
+          //     that.failedCoures[courseCode] = {};
+          //   } else if (
+          //     courses[i].subjectCode == "CS" || 
+          //     courseCode == "CO487" || 
+          //     courseCode == "STAT440"
+          //   ) {
+          //     that.csCourses[courseCode] = {};
+          //   } else if (courses[i].subjectCode == "MATH" || courses[i].subjectCode == "status") {
+          //     that.mathCourses[courseCode] = {};
+          //   }
             
-            that.courses[courseCode] = {};
+          //   that.courses[courseCode] = {};
           }
 
         }).fail(function( jqxhr, textStatus, error ) {
@@ -91,6 +94,7 @@ function g011(userId, htmlId) {
 
   };
 
+  // ----- CONTROLLERS -----
   var courseView = {
     updateView: function (msg) {
       var t = "";
@@ -124,28 +128,42 @@ function g011(userId, htmlId) {
     }
   };
 
+  var estimateGraduationController = {
+    initView: function () {
+      console.log("Initializing estimateGraduationController");
+    }
+  }
 
-  /*
-   * Initialize the widget.
-   */
+  // ----- INITIALIZATION -----
   console.log("Initializing g011(" + userId + ", " + htmlId + ")");
   portal.loadTemplates("widgets/g011/templates.json",
     function (t) {
       templates = t;
-      $(htmlId).html(templates.baseHtml);
-      courseView.initView();
-    });
-}
 
-$(function () {
-  $('#accordion label').append("<div class='term'><button class='btn btn-sm dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown'>Term<span class='caret'></span></button><ul class='dropdown-menu pull-right'><li><a href='#'>Fall</a></li><li><a href='#'>Winter</a></li><li><a href='#'>Spring</a></li></ul><input type='text' class='form-control' placeholder='year'></div>");
+      $(htmlId).html(templates.container);
 
-  $('#pop').popover({
-    html: true,
-    trigger: 'hover', 
-    placement: 'right',
-    content: function() {
-      return $('#mathaddnote').html();
+      $('#g011 .container').html(templates.header);
+      $('#g011 .container').append(templates.estimateGraduation);
+
+      $('#g011 .container').append(templates.requiredCourses);
+      $('#g011 #required-courses .panel').html(templates.csCourses);
+      $('#g011 #required-courses .panel').append(templates.mathCourses);
+      $('#g011 #required-courses .panel').append(templates.nonMathCourses);
+      $('#g011 #required-courses .panel').append(templates.electiveCourses);
+
+      $('#g011 .container').append(templates.additionalConstraints);
+      $('#g011 #additional-constraints .panel').html(templates.csBreadth1Courses);
+      $('#g011 #additional-constraints .panel').append(templates.csBreadth2Courses);
+      $('#g011 #additional-constraints .panel').append(templates.communicationCourses);
+      $('#g011 #additional-constraints .panel').append(templates.businessCourses);
+
+      $('#g011 .container').append(templates.footer);
+
+      model.loadCourses();
     }
-  });
-});
+  );
+
+  $(htmlId).html(
+    '<title>CS349 A4 Portal</title>'
+  );
+}

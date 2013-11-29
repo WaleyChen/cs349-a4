@@ -1,10 +1,10 @@
-.dropdown.checkbox input {
+dropdown.checkbox input {
 	width: 60px;
 	display: inline;
 	height: 25px;
 }
 
-.dropdown.checkbox button {
+dropdown.checkbox button {
 	height: 25px;
 	margin-left: 10px;
 	margin-right: 3px;
@@ -26,6 +26,6 @@
 	margin-bottom: 10px;
 }
 
-.term {
+#g011.term {
 	display: inline;
 }

@@ -1,0 +1,20 @@
+github
+- mentosfreshmaker
+
+- convest a04.html to templates
+- put "courses per term" and "co-op off terms" on the same line
+- "courses per term" dropbox is not working
+- co-op off terms should not be read-only
+- put a question mark beside "estimated graduation date" to explain how it works
+- have to whole top accordion be clickable
+- have the accordions be open by default
+
+front end
+- expandable checklists
+- dropdowns for term
+- textboxes for to select a course, year
+- twitter bootstrap: http://stackoverflow.com/questions/11167628/trees-in-twitter-bootstrap
+
+backend
+- check for prereqs
+- check for terms offerred

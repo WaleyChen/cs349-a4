@@ -1,19 +1,314 @@
-
 {
-    "baseHtml": [
-        "<div id='g011_chooser'>",
-            "<label>Subject: <input type='text' id='g011_subject' size='5'></label>",
-            "<label>Catalog: <input type='text' id='g011_catalog' size='5'/></label>",
-            "<button id='g011_search'>Go</button>",
+    "additionalConstraints": [
+      "<div id=\"additional-constraints\">",
+          "<h4 id=\"required\">Additional Constraints</h4>",
+          "<div class=\"panel-group\" id=\"accordion\">",
+              "<div class=\"panel panel-default\">",
+              "</div>",
+          "</div>",
+      "</div>",
+      "<hr>"
+    ],
+
+    "businessCourses": [
+      "<div class=\"panel-heading\">",
+        "<h4 class=\"panel-title\">",
+          "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#business\">",
+            "<span></span> 3.0 Business",
+          "</a>",
+        "</h4>",
+      "</div>",
+
+      "<div id=\"business\" class=\"panel-collapse collapse\">",
+        "<div class=\"panel-body\">",
+          "<ul class=\"list-unstyled\">",
+
+          "<li>",
+            "<div class=\"checkbox\">",
+              "<label>",
+                "<input class=\"CS115 CS135 CS145\" type=\"checkbox\"> CS 1[134]5",
+              "</label>",
+            "</div>",
+          "</li>",
+
+          "</ul>",
         "</div>",
-        "<div id='g011_cDescr'></div>"
+      "</div>"
     ],
 
-    "courseD": [
-        "<h4>{{course.subject}} {{course.catalog_number}}: {{course.title}}</h4>",
-        "<p>{{course.description}}</p>"
+    "container": [ "<div class=\"container\"></div>" ],
+
+    "communicationCourses": [
+      "<div class=\"panel-heading\">",
+        "<h4 class=\"panel-title\">",
+          "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#communication\">",
+            "<span></span> 1.0 Communication",
+          "</a>",
+        "</h4>",
+      "</div>",
+
+      "<div id=\"communication\" class=\"panel-collapse collapse\">",
+        "<div class=\"panel-body\">",
+          "<ul class=\"list-unstyled\">",
+
+          "<li>",
+            "<div class=\"checkbox\">",
+              "<label>",
+                "<input class=\"CS115 CS135 CS145\" type=\"checkbox\"> CS 1[134]5",
+              "</label>",
+            "</div>",
+          "</li>",
+
+          "</ul>",
+        "</div>",
+      "</div>"
     ],
 
-    "error": "<p>Course not found.</p>"
+    "csBreadth1Courses": [
+      "<div class=\"panel-heading\">",
+        "<h4 class=\"panel-title\">",
+          "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#cs-breadth1\">",
+            "<span></span> 1.0 CS Breadth-1",
+          "</a>",
+        "</h4>",
+      "</div>",
+
+      "<div id=\"cs-breadth1\" class=\"panel-collapse collapse\">",
+        "<div class=\"panel-body\">",
+          "<ul class=\"list-unstyled\">",
+
+          "<li>",
+            "<div class=\"checkbox\">",
+              "<label>",
+                "<input class=\"CS115 CS135 CS145\" type=\"checkbox\"> CS 1[134]5",
+              "</label>",
+            "</div>",
+          "</li>",
+
+          "</ul>",
+        "</div>",
+      "</div>"
+    ],
+
+    "csBreadth2Courses": [
+      "<div class=\"panel-heading\">",
+        "<h4 class=\"panel-title\">",
+          "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#cs-breadth2\">",
+            "<span></span> 1.0 CS Breadth-2",
+          "</a>",
+        "</h4>",
+      "</div>",
+
+      "<div id=\"cs-breadth2\" class=\"panel-collapse collapse\">",
+        "<div class=\"panel-body\">",
+          "<ul class=\"list-unstyled\">",
+
+          "<li>",
+            "<div class=\"checkbox\">",
+              "<label>",
+                "<input class=\"CS115 CS135 CS145\" type=\"checkbox\"> CS 1[134]5",
+              "</label>",
+            "</div>",
+          "</li>",
+
+          "</ul>",
+        "</div>",
+      "</div>"
+    ],
+
+    "csCourses": [
+        "<div class=\"panel-heading\">",
+          "<h4 class=\"panel-title\">",
+            "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#cs\">",
+                "<span></span>7.5 CS",
+            "</a>",
+          "</h4>",
+        "</div>",
+
+        "<div id=\"cs\" class=\"panel-collapse collapse\">",
+            "<div class=\"panel-body\">",
+                "<ul class=\"list-unstyled\">",
+
+                  "<li>",
+                    "<div class=\"checkbox\">",
+                      "<label>",
+                        "<input class=\"CS115 CS135 CS145\" type=\"checkbox\"> CS 1[134]5",
+                      "</label>",
+                    "</div>",
+                  "</li>",
+
+                  "<li>",
+                    "<div class=\"checkbox\">",
+                      "<label>",
+                        "<input class=\"CS136 CS146\" type=\"checkbox\"> CS 1[34]6",
+                      "</label>",
+                    "</div>",
+                  "</li>",
+
+                  "<li>",
+                    "<div class=\"checkbox\">",
+                        "<label>",
+                            "<input class=\"CS240\" type=\"checkbox\"> CS 240",
+                        "</label>",
+                    "</div>",
+                  "</li>",
+
+                  "<li>",
+                    "<div class=\"checkbox\">",
+                        "<label>",
+                            "<input class=\"CS241\" type=\"checkbox\"> CS 241",
+                        "</label>",
+                    "</div>",
+                  "</li>",
+
+                "<li>",
+                    "<div class=\"checkbox\">",
+                        "<label>",
+                            "<input class=\"CS245\" type=\"checkbox\"> CS 245",
+                        "</label>",
+                    "</div>",
+                "</li>",
+
+                "<li>",
+                    "<div class=\"checkbox\">",
+                        "<label>",
+                            "<input class=\"CS246\" type=\"checkbox\"> CS 246",
+                        "</label>",
+                    "</div>",
+                "</li>",
+
+                "<li>",
+                    "<div class=\"checkbox\">",
+                        "<label>",
+                            "<input class=\"CS251\" type=\"checkbox\"> CS 251",
+                        "</label>",
+                    "</div>",
+                "</li>",
+
+                "<li>",
+                    "<div class=\"checkbox\">",
+                        "<label>",
+                            "<input class=\"CS341\" type=\"checkbox\"> CS 341",
+                        "</label>",
+                    "</div>",
+                "</li>",
+
+                "<li>",
+                   "<div class=\"checkbox\">",
+                        "<label>",
+                            "<input class=\"CS350\" type=\"checkbox\"> CS 350",
+                        "</label>",
+                    "</div>",
+                "</li>",
+
+              "</ul>",
+            "</div>",
+        "</div>"
+    ],
+
+    "electiveCourses": [
+      "<div class=\"panel-heading\">",
+        "<h4 class=\"panel-title\">",
+          "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#elective\">",
+              "<span></span>4.0 Elective",
+          "</a>",
+        "</h4>",
+      "</div>",
+
+      "<div id=\"elective\" class=\"panel-collapse collapse\">",
+          "<div class=\"panel-body\">",
+              "<ul class=\"list-unstyled\">",
+
+              "</ul>",
+          "</div>",
+      "</div>"
+    ],
+
+    "estimateGraduation": [
+        "<div id=\"estimate\">",
+            "<p>Estimated Graduation Date:<span id=\"graduation\"></span></p>",
+            "<ul class=\"list-unstyled\">",
+                "<li class=\"dropdown\">",
+                    "<button class=\"btn btn-sm dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\">",
+                    "-",
+                        "<span class=\"caret\"></span>",
+                    "</button>",
+                    "<ul class=\"dropdown-menu\">",
+                        "<li><a href=\"#\">1</a></li>",
+                        "<li><a href=\"#\">2</a></li>",
+                        "<li><a href=\"#\">3</a></li>",
+                        "<li><a href=\"#\">4</a></li>",
+                        "<li><a href=\"#\">5</a></li>",
+                        "<li><a href=\"#\">6</a></li>",
+                    "</ul>",
+                "</li>",
+                "courses per term",
+              "<li><input type=\"text\" class=\"form-control\" readonly>co-op / off terms</li>",
+            "</ul>",
+        "</div>",
+        "<hr>"
+    ],
+
+    "footer": [
+      "<p><span style=\"color: red;\">Disclaimer</span>: This checklist is a handy tool, but it is not a substitute for the official degree regulations. If there is a question of interpretation or a discrepancy, the University Calendar always takes precedence.</p>"
+    ],
+
+    "header": [
+        "<div class=\"page-header\">",
+            "<h4>2013-2014 BCS/Business Option Checklist</h4>",
+            "<ol>",
+                "<li>Under <a href=\"#required\">Required Courses</a>, fill in forty unique courses (20 units) that you have passed but not excluded.</li>",
+                "<li>Verify that those courses also satisfy the <a href=\"#additional\">Additional Constraints</a>.</li>",
+            "</ol>",
+        "</div>"
+    ],
+
+    "mathCourses": [
+        "<div class=\"panel-heading\">",
+          "<h4 class=\"panel-title\">",
+            "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#math\">",
+                "<span></span>3.5 Math",
+            "</a>",
+          "</h4>",
+        "</div>",
+
+        "<div id=\"math\" class=\"panel-collapse collapse\">",
+            "<div class=\"panel-body\">",
+                "<ul class=\"list-unstyled\">",
+
+                "</ul>",
+            "</div>",
+        "</div>"
+    ],
+
+    "nonMathCourses": [
+      "<div class=\"panel-heading\">",
+        "<h4 class=\"panel-title\">",
+          "<a class=\"accordion-toggle\" data-toggle=\"collapse\" href=\"#non-math\">",
+              "<span></span>5.0 Non-Math",
+          "</a>",
+        "</h4>",
+      "</div>",
+
+      "<div id=\"non-math\" class=\"panel-collapse collapse\">",
+          "<div class=\"panel-body\">",
+              "<ul class=\"list-unstyled\">",
+
+              "</ul>",
+          "</div>",
+      "</div>"
+    ],
+
+    "requiredCourses": [
+        "<div id=\"required-courses\">",
+            "<h4 id=\"required\">Required Courses</h4>",
+            "<div class=\"panel-group\" id=\"accordion\">",
+                "<div class=\"panel panel-default\">",
+
+                "</div>",
+            "</div>",
+        "</div>",
+        "<hr>"
+    ]
 
 }
