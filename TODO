@@ -12,7 +12,6 @@
 - co-op off terms should not be read-only
 - put a question mark beside "estimated graduation date" to explain how it works
 - have to whole top accordion be clickable
-- have the accordions be open by default
 
 front end
 - expandable checklists
@@ -25,3 +24,4 @@ backend
 - check for terms offerred
 
 jQuery selectors should limit the selection to your own widget's DIV. For example, $("#bwbecker p") or $("p", "#bwbecker") for paragraph tags within bwbecker's widget.
+
