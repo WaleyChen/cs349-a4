@@ -11,6 +11,8 @@ dropdown.checkbox button {
 	padding: 3px 10px;
 }
 
+input.g011-course { width: 60px; }
+
 #estimate input {
 	width: 45px;
 	height: 25px;

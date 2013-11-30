@@ -30,7 +30,36 @@ function g011(userId, htmlId) {
       }
     },
 
+    //----- BOOLS -----
+    isFourthYearCSCourse: function(subject, courseNumber) {
+      return subject == "CS" && 440 <= courseNumber && courseNumber <= 489;
+    },
+
+    isNonMathCourse: function(subject) {
+      return subject != "ACTSC" && subject != "AMATH" && subject != "CO" && 
+                subject != "COMM" && subject != "CM" && subject != "CS" && 
+                subject != "MATH" && subject != "MATBUS" && subject != "MTHEL" &&
+                subject != "PMATH" && subject != "SE" && subject != "STAT"
+    },
+
+    isSixthYearCSCourse: function(subject, courseNumber) {
+      return subject == "CS" && 600 <= courseNumber && courseNumber < 700;
+    },
+
+    isSeventhYearCSCourse: function(subject, courseNumber) {
+      return subject == "CS" && 700 <= courseNumber && courseNumber < 800;
+    },
+
+    isThirdYearCSCourse: function(subject, courseNumber) {
+      return subject == "CS" && 340 <= courseNumber && courseNumber <= 398;
+    },
+
+    isThirdOrFourthYearCSCourse: function(subject, courseNumber) {
+      return this.isThirdYearCSCourse(subject, courseNumber) ||
+                this.isFourthYearCSCourse(subject, courseNumber);
+    },
     //----- CORE -----
+
     // load information about the courses the student has taken
     loadCourses: function() {
       var that = this;
@@ -41,27 +70,83 @@ function g011(userId, htmlId) {
           var courses = d.result.courses;
           var courseCode;
           var courseCodeSelector;
+          var courseNumber;
+          var grade;
+          var rawGrade;
+          var subjectCode;
+          var thirdOrFourthYearCSCourseCount = 0;
 
           for (var i = 0; i < courses.length; i++) {
-            courseCode = courses[i].subjectCode + courses[i].catalog;
-            courseCodeSelector = "#g011 ." + courseCode;
-            $(courseCodeSelector).prop('checked', true).attr("disabled", true);
-          //   console.log(courseCode);
+            courseNumber = courses[i].catalog;
 
-          //   if (courses[i].courseGrade == "WF") {
-          //     that.failedCoures[courseCode] = {};
-          //   } else if (
-          //     courses[i].subjectCode == "CS" || 
-          //     courseCode == "CO487" || 
-          //     courseCode == "STAT440"
-          //   ) {
-          //     that.csCourses[courseCode] = {};
-          //   } else if (courses[i].subjectCode == "MATH" || courses[i].subjectCode == "status") {
-          //     that.mathCourses[courseCode] = {};
-          //   }
-            
-          //   that.courses[courseCode] = {};
+            subjectCode = courses[i].subjectCode;
+            courseCode = subjectCode + courseNumber;
+
+            rawGrade = courses[i].courseGrade;
+            grade = parseInt(rawGrade);
+
+            // add courseCode to appropriate checkbox if the student is currently taking 
+            // the course
+            if (rawGrade == "") {
+              if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && thirdOrFourthYearCSCourseCount != 3) {
+                courseCodeSelector = "#g011 .third-or-fourth-year-CS-course:not(:checked):not(.appended-course-code)";
+                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+                thirdOrFourthYearCSCourseCount++;
+              } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
+                courseCodeSelector = "#g011 .fourth-year-CS-course:not(:checked):not(.appended-course-code)";
+                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+              } else {
+                courseCodeSelector = "#g011 ." + courseCode;
+              }
+
+              $(courseCodeSelector).first().addClass("appended-course-code");
+            }
+
+            // select course if the student passed the course
+            // pass == number grade assigned and grade >=50
+            if (!isNaN(grade) && parseInt(grade) >= 50) {
+              // excludes CS341 and CS350 however since they have their own checkbox
+              if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && 
+                   ( courseNumber != 341 && courseNumber != 350 ) && 
+                   thirdOrFourthYearCSCourseCount != 3 ) {
+                courseCodeSelector = "#g011 .third-or-fourth-year-CS-course:not(:checked)";
+                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+                thirdOrFourthYearCSCourseCount++;
+              } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
+                courseCodeSelector = "#g011 .fourth-year-CS-course:not(:checked)";
+                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+              } else if ( that.isSixthYearCSCourse(subjectCode, courseNumber) ) {
+                courseCodeSelector = "#g011 .sixth-year-CS-course:not(:checked)";
+                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+              } else if ( that.isSeventhYearCSCourse(subjectCode, courseNumber) ) {
+                courseCodeSelector = "#g011 .seventh-year-CS-course:not(:checked)";
+                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+              } else if (that.isNonMathCourse(subjectCode)) {
+                courseCodeSelector = "#g011 .non-math-course:not(:checked)";
+                $(courseCodeSelector).first().parent().append(courseCode);
+              } else {
+                courseCodeSelector = "#g011 ." + courseCode;
+              }
+
+              if ($(courseCodeSelector).length) {
+                $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
+              } else {
+                courseCodeSelector = "#g011 .elective-course:not(:checked)";
+                $(courseCodeSelector).first().parent().append(courseCode);
+                $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
+              }
+
+              $("#g011 ." + courseCode).prop('checked', true).attr("disabled", true);
+              courses[courseCode] = "";
+            }
+
+            console.log(courseCode);
+            console.log(that.isThirdOrFourthYearCSCourse(courseCode, courseNumber));
+            console.log(grade);
+            console.log(parseInt(grade) >= 50);
           }
+
+          $('#g011 input:checkbox:not(:checked)').parent().append(' <input class=\"g011-course\" type=\"text\">');
 
         }).fail(function( jqxhr, textStatus, error ) {
           var err = textStatus + ", " + error;
@@ -142,22 +227,22 @@ function g011(userId, htmlId) {
 
       $(htmlId).html(templates.container);
 
-      $('#g011 .container').html(templates.header);
-      $('#g011 .container').append(templates.estimateGraduation);
+      $('#g011 .g011-container').html(templates.header);
+      $('#g011 .g011-container').append(templates.estimateGraduation);
 
-      $('#g011 .container').append(templates.requiredCourses);
+      $('#g011 .g011-container').append(templates.requiredCourses);
       $('#g011 #required-courses .panel').html(templates.csCourses);
       $('#g011 #required-courses .panel').append(templates.mathCourses);
       $('#g011 #required-courses .panel').append(templates.nonMathCourses);
       $('#g011 #required-courses .panel').append(templates.electiveCourses);
 
-      $('#g011 .container').append(templates.additionalConstraints);
+      $('#g011 .g011-container').append(templates.additionalConstraints);
       $('#g011 #additional-constraints .panel').html(templates.csBreadth1Courses);
       $('#g011 #additional-constraints .panel').append(templates.csBreadth2Courses);
       $('#g011 #additional-constraints .panel').append(templates.communicationCourses);
       $('#g011 #additional-constraints .panel').append(templates.businessCourses);
 
-      $('#g011 .container').append(templates.footer);
+      $('#g011 .g011-container').append(templates.footer);
 
       model.loadCourses();
     }
