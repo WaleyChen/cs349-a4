@@ -60,6 +60,12 @@ function g011(userId, htmlId) {
     },
     //----- CORE -----
 
+    markCurrentlyTaking: function(selector, courseCode) {
+      selector = '#g011 ' + selector + ':not(:checked):not(.g011-cur-course)';
+      $(selector).first().parent().append(" - (" + courseCode + ")");
+      $(selector).first().addClass("g011-cur-course");
+    },
+
     // load information about the courses the student has taken
     loadCourses: function() {
       var that = this;
@@ -89,17 +95,17 @@ function g011(userId, htmlId) {
             // the course
             if (rawGrade == "") {
               if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && thirdOrFourthYearCSCourseCount != 3) {
-                courseCodeSelector = "#g011 .third-or-fourth-year-CS-course:not(:checked):not(.appended-course-code)";
-                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+                that.markCurrentlyTaking('.third-or-fourth-year-CS-course', courseCode);
+                that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
+
                 thirdOrFourthYearCSCourseCount++;
               } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
-                courseCodeSelector = "#g011 .fourth-year-CS-course:not(:checked):not(.appended-course-code)";
-                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+                that.markCurrentlyTaking('.fourth-year-CS-course', courseCode);
+                that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
               } else {
                 courseCodeSelector = "#g011 ." + courseCode;
+                $(courseCodeSelector).first().addClass("g011-cur-course");
               }
-
-              $(courseCodeSelector).first().addClass("appended-course-code");
             }
 
             // select course if the student passed the course
@@ -122,16 +128,18 @@ function g011(userId, htmlId) {
                 courseCodeSelector = "#g011 .seventh-year-CS-course:not(:checked)";
                 $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
               } else if (that.isNonMathCourse(subjectCode)) {
-                courseCodeSelector = "#g011 .non-math-course:not(:checked)";
+                courseCodeSelector = "#g011 .g011-non-math-course:not(:checked)";
                 $(courseCodeSelector).first().parent().append(courseCode);
               } else {
                 courseCodeSelector = "#g011 ." + courseCode;
               }
 
+              // select a checkbox that matches a specific course code, if no such checkbox exists,
+              // then it's a elective
               if ($(courseCodeSelector).length) {
                 $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
               } else {
-                courseCodeSelector = "#g011 .elective-course:not(:checked)";
+                courseCodeSelector = "#g011 .g011-elective-course:not(:checked)";
                 $(courseCodeSelector).first().parent().append(courseCode);
                 $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
               }
@@ -146,8 +154,9 @@ function g011(userId, htmlId) {
             console.log(parseInt(grade) >= 50);
           }
 
-          $('#g011 input:checkbox:not(:checked)').parent().append(' <input class=\"g011-course\" type=\"text\">');
-
+          $('#g011 .g011-multi-courses:not(:checked):not(.g011-cur-course)').parent().append(
+            '<input class=\'g011-course\' placeholder=\'coursecode\' type=\'text\'>' + 
+          );
         }).fail(function( jqxhr, textStatus, error ) {
           var err = textStatus + ", " + error;
           console.log( "Request Failed: " + err );

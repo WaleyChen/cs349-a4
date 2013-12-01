@@ -1,4 +1,12 @@
+MUST FINISH
+- estimating when the user will finish their degree
+- being able to pick a course and indicate whether the prerequisites are met for course chosen
+- being able to pick a course, terms offered
+
 - stress test that your course loading works
+
+- current course input for additional constraints
+
 - count the courses
     - contraints
         - breadth 1
