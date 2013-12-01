@@ -1,0 +1,42 @@
+- popover explanation of graduation date
+- counts of units
+
+- jquery call to verify the term exists
+- jquery call to check prereqs are met
+
+MUST FINISH
+- estimating when the user will finish their degree
+- being able to pick a course and indicate whether the prerequisites are met for course chosen
+- being able to pick a course, terms offered
+
+
+- stress test that your course loading works
+- comment your code
+- current course input for additional constraints
+
+- count the courses
+    - contraints
+        - breadth 1
+        - breadth 2
+        - communication
+        - business
+- error handling and selecting courses you plan to take
+- convest a04.html to templates
+- put "courses per term" and "co-op off terms" on the same line
+- "courses per term" dropbox is not working
+- co-op off terms should not be read-only
+- put a question mark beside "estimated graduation date" to explain how it works
+- have to whole top accordion be clickable
+
+front end
+- expandable checklists
+- dropdowns for term
+- textboxes for to select a course, year
+- twitter bootstrap: http://stackoverflow.com/questions/11167628/trees-in-twitter-bootstrap
+
+backend
+- check for prereqs
+- check for terms offerred
+
+jQuery selectors should limit the selection to your own widget's DIV. For example, $("#bwbecker p") or $("p", "#bwbecker") for paragraph tags within bwbecker's widget.
+

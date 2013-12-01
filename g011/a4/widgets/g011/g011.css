@@ -1,14 +1,27 @@
-.dropdown.checkbox input {
+dropdown.checkbox input {
 	width: 60px;
 	display: inline;
 	height: 25px;
 }
 
-.dropdown.checkbox button {
+dropdown.checkbox button {
 	height: 25px;
 	margin-left: 10px;
 	margin-right: 3px;
 	padding: 3px 10px;
+}
+
+.g011_course { 
+	display: inline-block; 
+	width: 105px; 
+}
+#g011 .glyphicon {
+	font-size: 19px;
+	top: 5px;
+}
+.g011_term-select { 
+	display: inline-block;
+	width: 75px; 
 }
 
 #estimate input {
@@ -26,7 +39,7 @@
 	margin-bottom: 10px;
 }
 
-.term {
+#g011.term {
 	display: inline;
 }
 
