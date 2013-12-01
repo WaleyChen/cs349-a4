@@ -62,9 +62,9 @@ function g011(userId, htmlId) {
     //----- CORE -----
 
     markCurrentlyTaking: function(selector, courseCode) {
-      selector = '#g011 ' + selector + ':not(:checked):not(.g011-cur-course)';
+      selector = '#g011 ' + selector + ':not(:checked):not(.g011_cur-course)';
       $(selector).first().parent().append(" - (" + courseCode + ")");
-      $(selector).first().addClass("g011-cur-course");
+      $(selector).first().addClass("g011_cur-course");
     },
 
     // load information about the courses the student has taken
@@ -95,15 +95,15 @@ function g011(userId, htmlId) {
           if (rawGrade == "") {
             if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && thirdOrFourthYearCSCourseCount != 3) {
               that.markCurrentlyTaking('.third-or-fourth-year-CS-course', courseCode);
-              that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
+              that.markCurrentlyTaking('#g011_cs-breadth-1 .' + courseCode, courseCode);
 
               thirdOrFourthYearCSCourseCount++;
             } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
               that.markCurrentlyTaking('.fourth-year-CS-course', courseCode);
-              that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
+              that.markCurrentlyTaking('#g011_cs-breadth-1 .' + courseCode, courseCode);
             } else {
               courseCodeSelector = "#g011 ." + courseCode;
-              $(courseCodeSelector).first().addClass("g011-cur-course");
+              $(courseCodeSelector).first().addClass("g011_cur-course");
             }
           }
 
@@ -127,7 +127,7 @@ function g011(userId, htmlId) {
               courseCodeSelector = "#g011 .seventh-year-CS-course:not(:checked)";
               $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
             } else if (that.isNonMathCourse(subjectCode)) {
-              courseCodeSelector = "#g011 .g011-non-math-course:not(:checked)";
+              courseCodeSelector = "#g011 .g011_non-math-course:not(:checked)";
               $(courseCodeSelector).first().parent().append(courseCode);
             } else {
               courseCodeSelector = "#g011 ." + courseCode;
@@ -138,7 +138,7 @@ function g011(userId, htmlId) {
             if ($(courseCodeSelector).length) {
               $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
             } else {
-              courseCodeSelector = "#g011 .g011-elective-course:not(:checked)";
+              courseCodeSelector = "#g011 .g011_elective-course:not(:checked)";
               $(courseCodeSelector).first().parent().append(courseCode);
               $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
             }
@@ -153,7 +153,7 @@ function g011(userId, htmlId) {
           console.log(parseInt(grade) >= 50);
         }
 
-        $('#g011 .g011-multi-courses:not(:checked):not(.g011-cur-course)').parent().append(
+        $('#g011 .g011_multi-courses:not(:checked):not(.g011_cur-course)').parent().append(
           '&nbsp; <input class=\'form-control g011_course\' placeholder=\'CourseCode\' type=\'text\'> &nbsp;' + 
           '<select class="form-control g011_term-select"> <option>Term</option> <option>Fall</option> <option>Winter</option> <option>Spring</option> </select> &nbsp;' +
           '<select class="form-control g011_term-select"> <option>Year</option> <option>2014</option> <option>2015</option> <option>2016</option> <option>2017</option> <option>2018</option> </select> &nbsp;'
@@ -281,22 +281,22 @@ function g011(userId, htmlId) {
 
       $(htmlId).html(templates.container);
 
-      $('.g011_container').append(templates.header);
-      $('.g011_container').append(templates.estimateGraduation);
+      $('#g011 .g011_container').append(templates.header);
+      $('#g011 .g011_container').append(templates.estimateGraduation);
 
-      $('.g011_container').append(templates.requiredCourses);
-      $('#g011_required-courses .panel').html(templates.csCourses);
-      $('#g011_required-courses .panel').append(templates.mathCourses);
-      $('#g011_required-courses .panel').append(templates.nonMathCourses);
-      $('#g011_required-courses .panel').append(templates.electiveCourses);
+      $('#g011 .g011_container').append(templates.requiredCourses);
+      $('#g011 #required-courses .panel').html(templates.csCourses);
+      $('#g011 #required-courses .panel').append(templates.mathCourses);
+      $('#g011 #required-courses .panel').append(templates.nonMathCourses);
+      $('#g011 #required-courses .panel').append(templates.electiveCourses);
 
-      $('.g011_container').append(templates.additionalConstraints);
-      $('#g011_additional-contraint .panel').html(templates.csBreadth1Courses);
-      $('#g011_additional-contraint .panel').append(templates.csBreadth2Courses);
-      $('#g011_additional-contraint .panel').append(templates.communicationCourses);
-      $('#g011_additional-contraint .panel').append(templates.businessCourses);
+      $('#g011 .g011_container').append(templates.additionalConstraints);
+      $('#g011 #g011_additional-constraint .panel').html(templates.csBreadth1Courses);
+      $('#g011 #g011_additional-constraint .panel').append(templates.csBreadth2Courses);
+      $('#g011 #g011_additional-constraint .panel').append(templates.communicationCourses);
+      $('#g011 #g011_additional-constraint .panel').append(templates.businessCourses);
 
-      $('.g011_container').append(templates.footer);
+      $('#g011 .g011_container').append(templates.footer);
 
       model.loadCourses();
       $('#g011-cs-breadth-2 input').click(function() {
@@ -312,75 +312,74 @@ function g011(userId, htmlId) {
 }
 
 $(function () {
-  $('#accordion label').append("<span class='g011coursedate'><select class='form-control g011term'><option>Term</option><option value='fall'>Fall</option><option value='winter'>Winter</option><option value='spring'>Spring</option></select><input type='text' class='form-control' placeholder='year'></span>");
 
 // Checkbox Counts
-  $('#g011cs').change(function() {
-    var courses = $("#g011cs input:checked").length;
+  $('#g011_cs').change(function() {
+    var courses = $("#g011_cs input:checked").length;
     
     if(courses > 0) {
-      $('#g011csunits').text(courses/2 + "/ ");
+      $('#g011_csunits').text(courses/2 + "/ ");
     }
     else {
-      $('#g011csunits').text(""); 
+      $('#g011_csunits').text(""); 
     }
   });
 
-  $('#g011math').change(function() {
-    var courses = $("#g011math input:checked").length;
+  $('#g011_math').change(function() {
+    var courses = $("#g011_math input:checked").length;
     
     if(courses > 0) {
-      $('#g011mathunits').text(courses/2 + "/ ");
+      $('#g011_mathunits').text(courses/2 + "/ ");
     }
     else {
-      $('#g011mathunits').text(""); 
+      $('#g011_mathunits').text(""); 
     }
   });
 
-  $('#g011mathadd').change(function() {
-    var courses = $("#g011mathadd input:checked").length;
+  $('#g011_mathadd').change(function() {
+    var courses = $("#g011_mathadd input:checked").length;
     
     if(courses > 0) {
-      $('#g011mathaddunits').text(courses/2 + "/ ");
+      $('#g011_mathaddunits').text(courses/2 + "/ ");
     }
     else {
-      $('#g011mathaddunits').text(""); 
+      $('#g011_mathaddunits').text(""); 
     }
   });
 
-  $('#g011nonmath').change(function() {
-    var courses = $("#g011nonmath input:checked").length;
+  $('#g011_nonmath').change(function() {
+    var courses = $("#g011_nonmath input:checked").length;
     
     if(courses > 0) {
-      $('#g011nonmathunits').text(courses/2 + "/ ");
+      $('#g011_nonmathunits').text(courses/2 + "/ ");
     }
     else {
-      $('#g011nonmathunits').text(""); 
+      $('#g011_nonmathunits').text(""); 
     }
   });
 
 
-  $('#g011elective').change(function() {
-    var courses = $("#g011elective input:checked").length;
+  $('#g011_elective').change(function() {
+    var courses = $("#g011_elective input:checked").length;
     
     if(courses > 0) {
-      $('#g011electiveunits').text(courses/2 + "/ ");
+      $('#g011_electiveunits').text(courses/2 + "/ ");
     }
     else {
-      $('#g011electiveunits').text(""); 
+      $('#g011_electiveunits').text(""); 
     }
   });
 
-  $('#g011twoof').change(function() {
-    var checkboxes = $("#g011twoof input[type='checkbox']");
-    var courses = $("#g011twoof input:checked").length;
+  $('#g011_twoof').change(function() {
+    var checkboxes = $("#g011_twoof input[type='checkbox']");
+    var courses = $("#g011_twoof input:checked").length;
     var max = 2;
     
     if(courses > 0) {
-      $('#g011twoofunits').text(courses + "/ ");
+      $('#g011_twoofunits').text(courses + "/ ");
     }
     else {
-      $('#g011twoofunits').text("");
+      $('#g011_twoofunits').text("");
     }
 
     checkboxes.change(function(){
@@ -389,16 +388,16 @@ $(function () {
     });
   });
 
-  $('#g011communication').change(function() {
-    var checkboxes = $("#g011communication input[type='checkbox']");
-    var courses = $("#g011communication input:checked").length;
+  $('#g011_communication').change(function() {
+    var checkboxes = $("#g011_communication input[type='checkbox']");
+    var courses = $("#g011_communication input:checked").length;
     var max = 2;
     
     if(courses > 0) {
-      $('#g011communicationunits').text(courses + "/ ");
+      $('#g011_communicationunits').text(courses + "/ ");
     }
     else {
-      $('#g011communicationunits').text(""); 
+      $('#g011_communicationunits').text(""); 
     }
 
     checkboxes.change(function(){
@@ -407,16 +406,16 @@ $(function () {
     });
   });  
 
-  $('#g011business').change(function() {
-    var checkboxes = $("#g011business input[type='checkbox']");
-    var courses = $("#g011business input:checked").length;
+  $('#g011_business').change(function() {
+    var checkboxes = $("#g011_business input[type='checkbox']");
+    var courses = $("#g011_business input:checked").length;
     var max = 6;
 
     if(courses > 0) {
-      $('#g011businessunits').text(courses + "/ ");
+      $('#g011_businessunits').text(courses + "/ ");
     }
     else {
-      $('#g011businessunits').text(""); 
+      $('#g011_businessunits').text(""); 
     }
     checkboxes.change(function(){
         var current = checkboxes.filter(':checked').length;
@@ -425,21 +424,21 @@ $(function () {
   });  
 
 //Popovers
-  $('#g011estimatedate').popover({
+  $('#g011_estimatedate').popover({
     html: true,
     trigger: 'hover', 
     placement: 'right',
     content: function() {
-      return $('#g011estimatenote').html();
+      return $('#g011_estimatenote').html();
     }
   });
 
-  $('#g011note').popover({
+  $('#g011_note').popover({
     html: true,
     trigger: 'hover', 
     placement: 'right',
     content: function() {
-      return $('#g011mathaddnote').html();
+      return $('#g011_mathaddnote').html();
     }
   });
 })
