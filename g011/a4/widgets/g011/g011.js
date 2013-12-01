@@ -310,3 +310,136 @@ function g011(userId, htmlId) {
     '<title>CS349 A4 Portal</title>'
   );
 }
+
+$(function () {
+  $('#accordion label').append("<span class='g011coursedate'><select class='form-control g011term'><option>Term</option><option value='fall'>Fall</option><option value='winter'>Winter</option><option value='spring'>Spring</option></select><input type='text' class='form-control' placeholder='year'></span>");
+
+// Checkbox Counts
+  $('#g011cs').change(function() {
+    var courses = $("#g011cs input:checked").length;
+    
+    if(courses > 0) {
+      $('#g011csunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#g011csunits').text(""); 
+    }
+  });
+
+  $('#g011math').change(function() {
+    var courses = $("#g011math input:checked").length;
+    
+    if(courses > 0) {
+      $('#g011mathunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#g011mathunits').text(""); 
+    }
+  });
+
+  $('#g011mathadd').change(function() {
+    var courses = $("#g011mathadd input:checked").length;
+    
+    if(courses > 0) {
+      $('#g011mathaddunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#g011mathaddunits').text(""); 
+    }
+  });
+
+  $('#g011nonmath').change(function() {
+    var courses = $("#g011nonmath input:checked").length;
+    
+    if(courses > 0) {
+      $('#g011nonmathunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#g011nonmathunits').text(""); 
+    }
+  });
+
+
+  $('#g011elective').change(function() {
+    var courses = $("#g011elective input:checked").length;
+    
+    if(courses > 0) {
+      $('#g011electiveunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#g011electiveunits').text(""); 
+    }
+  });
+
+  $('#g011twoof').change(function() {
+    var checkboxes = $("#g011twoof input[type='checkbox']");
+    var courses = $("#g011twoof input:checked").length;
+    var max = 2;
+    
+    if(courses > 0) {
+      $('#g011twoofunits').text(courses + "/ ");
+    }
+    else {
+      $('#g011twoofunits').text("");
+    }
+
+    checkboxes.change(function(){
+        var current = checkboxes.filter(':checked').length;
+        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+    });
+  });
+
+  $('#g011communication').change(function() {
+    var checkboxes = $("#g011communication input[type='checkbox']");
+    var courses = $("#g011communication input:checked").length;
+    var max = 2;
+    
+    if(courses > 0) {
+      $('#g011communicationunits').text(courses + "/ ");
+    }
+    else {
+      $('#g011communicationunits').text(""); 
+    }
+
+    checkboxes.change(function(){
+        var current = checkboxes.filter(':checked').length;
+        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+    });
+  });  
+
+  $('#g011business').change(function() {
+    var checkboxes = $("#g011business input[type='checkbox']");
+    var courses = $("#g011business input:checked").length;
+    var max = 6;
+
+    if(courses > 0) {
+      $('#g011businessunits').text(courses + "/ ");
+    }
+    else {
+      $('#g011businessunits').text(""); 
+    }
+    checkboxes.change(function(){
+        var current = checkboxes.filter(':checked').length;
+        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+    });
+  });  
+
+//Popovers
+  $('#g011estimatedate').popover({
+    html: true,
+    trigger: 'hover', 
+    placement: 'right',
+    content: function() {
+      return $('#g011estimatenote').html();
+    }
+  });
+
+  $('#g011note').popover({
+    html: true,
+    trigger: 'hover', 
+    placement: 'right',
+    content: function() {
+      return $('#g011mathaddnote').html();
+    }
+  });
+})

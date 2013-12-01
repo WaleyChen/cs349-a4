@@ -35,54 +35,53 @@
                     <div class="page-header">
                         <h1>2013-2014 BMath(Computer Science) Business Option Checklist</h1>
                         <ol>
-                            <li>Under <a href="#required">Required Courses</a>, fill in forty unique courses (20 units) that you have passed but not excluded.</li>
-                            <li>Verify that those courses also satisfy the <a href="#additional">Additional Constraints</a>.</li>
+                            <li>Under <a href="#g011required">Required Courses</a>, fill in forty unique courses (20 units) that you have passed but not excluded.</li>
+                            <li>Verify that those courses also satisfy the <a href="#g011additional">Additional Constraints</a>.</li>
                         </ol>
                         <p><span style="color: red;">Disclaimer</span>: This checklist is a handy tool, but it is not a substitute for the official degree regulations. If there is a question of interpretation or a discrepancy, the University Calendar always takes precedence.</p>
                     </div>
-                <div id="estimate" class="row">
-                    <p>Estimated Graduation Date:<span id="graduation"></span></p>
-                    <ul class="list-unstyled">
+                <div id="g011estimate" class="row">
+                  <p>Estimated Graduation Date
+                    <a class="accordion-toggle" data-toggle="collapse" href="#g011required" id="g011estimatedate"
+                        href="#" 
+                        data-toggle="popover" 
+                    >
+                      <span style="color: blue;"><sup>?</sup></span>
+                    </a>: <span id="g011graduation"></span></p>
+                    <ul class="list-inline">
                         <li class="dropdown">
-                            <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                            -
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                            </ul>
+                            <select class='form-control g011courses'>
+                              <option> - </option>
+                              <option value='1'>1</option>
+                              <option value='2'>2</option>
+                              <option value='3'>3</option>
+                              <option value='4'>4</option>
+                              <option value='5'>5</option>
+                              <option value='6'>6</option>
+                            </select>
                           courses per term
                         </li>
-                      <li><input type="text" class="form-control" readonly>co-op / off terms</li>
+                      <li><input type="text" class="form-control">co-op / off terms</li>
                     </ul>
                 </div>
 
                 <form role="form">
                   <div class="form-group row">
-
-                    <h2 id="required">Required Courses</h2>
+                    <h2 id="g011required">Required Courses</h2>
                     <div class="panel-group" id="accordion">
                       <div class="panel panel-default">
-
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011cs">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#cs">
-                                <span></span>7.5 CS units
-                            </a>
+                            
+                                <span id="g011csunits"></span>7.5 CS units
                           </h4>
                         </div>
-                        
-                        <div id="cs" class="panel-collapse collapse">
+                        <div id="g011cs" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
 
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox">  CS 1[134]5
                                   </label>
@@ -90,7 +89,7 @@
                               </li>
 
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 1[34]6
                                   </label>
@@ -98,7 +97,7 @@
                               </li>
 
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                     <label>
                                         <input type="checkbox"> CS 240
                                     </label>
@@ -106,7 +105,7 @@
                               </li>
 
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 241
                                   </label>
@@ -114,77 +113,77 @@
                               </li>
                               
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 245
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 246
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 251
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 341
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 350
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 360 or 365
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 370 or 371
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 340-398; 440-489
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 440-489
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 440-489
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> CS 440-498 or CS 499T or CS 6xx or CS 7xx or CO 487 or STAT 440
                                   </label>
@@ -196,74 +195,72 @@
                       </div>
 
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011math">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#math">
-                              4.5 Math units
-                            </a>
+                              <span id="g011mathunits"></span>4.5 Math units
                           </h4>
                         </div>
-                        <div id="math" class="panel-collapse collapse">
+                        <div id="g011math" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> MATH 1[34]5
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> MATH 1[034]6
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> MATH 1[234]7
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> MATH 1[234]8
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> MATH 2[34]5
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> MATH 2[34]7
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> MATH 2[34]9
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> STAT 2[34]0
                                   </label>
                                 </div>
                               </li>
                               <li>
-                                <div class="dropdown checkbox">
+                                <div class="checkbox">
                                   <label>
                                     <input type="checkbox"> STAT 2[34]1
                                   </label>
@@ -275,18 +272,19 @@
                       </div>
 
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011mathadd">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#mathadd" id="pop" 
+                            <p><span id="g011mathaddunits"></span>1.5 Additional Math units
+                            <a id="g011note" 
                                 href="#" 
-                                class="btn btn-lg btn-danger" 
                                 data-toggle="popover" 
                             >
-                              1.5 Additional Math units<span style="color: red;">*</span>
+                              <span style="color: red;">*</span>
                             </a>
+                          </p>
                           </h4>
                         </div>
-                        <div id="mathadd" class="panel-collapse collapse">
+                        <div id="g011mathadd" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li class="input-group">
@@ -313,14 +311,12 @@
                       </div>
 
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011nonmath">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#nonmath">
-                              5.0 Non-math units
-                            </a>
+                              <span id="g011nonmathunits"></span>5.0 Non-math units
                           </h4>
                         </div>
-                        <div id="nonmath" class="panel-collapse collapse">
+                        <div id="g011nonmath" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li class="input-group">
@@ -358,14 +354,12 @@
                         </div>
                       </div>
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011elective">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#elective">
-                              1.5 Elective units
-                            </a>
+                              <span id="g011electiveunits"></span>1.5 Elective units
                           </h4>
                         </div>
-                        <div id="elective" class="panel-collapse collapse">
+                        <div id="g011elective" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li class="input-group">
@@ -397,35 +391,33 @@
 
 
                   <div class="form-group row">
-                    <h2 id="additional">Additional Constraints</h2>
+                    <h2 id="g011additional">Additional Constraints</h2>
                       <div class="panel-group" id="accordion">
                         <div class="panel panel-default">
-                          <div class="panel-heading">
+                          <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011twoof">
                             <h4 class="panel-title">
-                              <a class="accordion-toggle" data-toggle="collapse" href="#twoof">
-                                  Two of:
-                              </a>
+                                  <span id="g011twoofunits"></span>2 of the following:
                             </h4>
                           </div>
-                          <div id="twoof" class="panel-collapse collapse">
+                          <div id="g011twoof" class="panel-collapse in">
                             <div class="panel-body">
                               <ul class="list-unstyled">
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox">  CS 348
                                     </label>
                                     </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> CS 454
                                     </label>
                                     </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> CS 490
                                     </label>
@@ -436,46 +428,44 @@
                           </div>
                         </div>
                         <div class="panel panel-default template">
-                          <div class="panel-heading">
+                          <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011communication">
                             <h4 class="panel-title">
-                              <a class="accordion-toggle" data-toggle="collapse" href="#communication">
-                                Two of (communications courses):
-                              </a>
+                                <span id="g011communicationunits"></span>2 communication courses:
                             </h4>
                           </div>
-                          <div id="communication" class="panel-collapse collapse">
+                          <div id="g011communication" class="panel-collapse in">
                             <div class="panel-body">
                               <ul class="list-unstyled">
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> CS 492
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ENGL 109
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ENGL 119
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ENGL 210x
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> SPCOM 100 or 223 or 225 or 324 or 325
                                     </label>
@@ -486,144 +476,142 @@
                           </div>
                         </div>
                         <div class="panel panel-default template">
-                          <div class="panel-heading">
+                          <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#g011business">
                             <h4 class="panel-title">
-                              <a class="accordion-toggle" data-toggle="collapse" href="#business">
-                                Six of (business courses):
-                              </a>
+                                <span id="g011businessunits"></span>6 business courses:
                             </h4>
                           </div>
-                          <div id="business" class="panel-collapse collapse">
+                          <div id="g011business" class="panel-collapse in">
                             <div class="panel-body">
                               <ul class="list-unstyled">
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox">  ACTSC 231
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ACTSC 371
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ACTSC 372
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> AFM 101 or 123
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> AFM 102
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> AFM 131 or ARBUS 101 or BUS 111W
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ARBUS 200 or ECON 220
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ARBUS 302 or ECON 344
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> BUS 121W
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> BUS 362W
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> BUS 481W
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> BUS 491W
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> COMM 400
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ECON 101
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> ECON 102
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> HRM 200
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> MSCI 211 or PSYCH 338
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> MSCI 311
                                     </label>
                                   </div>
                                 </li>
                                 <li>
-                                  <div class="dropdown checkbox">
+                                  <div class="checkbox">
                                     <label>
                                       <input type="checkbox"> MSCI 452
                                     </label>
@@ -638,42 +626,42 @@
                     <div class="form-group row">
                       <ul class="list-unstyled">
                         <li>
-                          <div class="dropdown checkbox">
+                          <div class="checkbox">
                             <label>
                               <input type="checkbox"> Seven (regular) or eight (co-op) terms enrolled in at least three courses totaling 1.5 units
                             </label>
                           </div>
                         </li>
                         <li>
-                          <div class="dropdown checkbox">
+                          <div class="checkbox">
                             <label>
                               <input type="checkbox"> No more than 3.0 units of failed or excluded courses
                             </label>
                           </div>
                         </li>
                         <li>
-                          <div class="dropdown checkbox">
+                          <div class="checkbox">
                             <label>
                               <input type="checkbox"> CS major average of 60% or higher
                             </label>
                           </div>
                         </li>
                         <li>
-                          <div class="dropdown checkbox">
+                          <div class="checkbox">
                             <label>
                               <input type="checkbox"> Cumulative average of 60% or higher
                             </label>
                           </div>
                         </li>
                         <li>
-                          <div class="dropdown checkbox">
+                          <div class="checkbox">
                             <label>
                               <input type="checkbox"> English Writing Skills
                             </label>
                           </div>
                         </li>
                         <li>
-                          <div class="dropdown checkbox">
+                          <div class="checkbox">
                             <label>
                               <input type="checkbox"> Co-op requirements met, if applicable, including a minimum of five PD courses.
                             </label>
@@ -688,7 +676,14 @@
 
                 </form>
 
-                    <div id="mathaddnote" style="display: none;">
+                    <div id="g011estimatenote" style="display: none;">
+                      <p><b>Graduation Date</b><br>
+                        = (current term)<br>
+                         + (number of courses remaining / number of courses taken per a study term)<br>
+                         + (number of co-op/off terms)</p>
+                    </div>
+
+                    <div id="g011mathaddnote" style="display: none;">
                       <p>Three additional courses labeled ACTSC, AMATH, CO, CM, PMATH, STAT, excluding the following:</p>
                     <ul>
                       <li>Courses with requisites normally excluding Honours CS students</li>
