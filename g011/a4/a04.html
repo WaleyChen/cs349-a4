@@ -41,8 +41,15 @@
                         <p><span style="color: red;">Disclaimer</span>: This checklist is a handy tool, but it is not a substitute for the official degree regulations. If there is a question of interpretation or a discrepancy, the University Calendar always takes precedence.</p>
                     </div>
                 <div id="estimate" class="row">
-                    <p>Estimated Graduation Date:<span id="graduation"></span></p>
-                    <ul class="list-unstyled">
+                  <p>Estimated Graduation Date
+                    <a class="accordion-toggle" data-toggle="collapse" href="#mathadd" id="estimatedate" 
+                        href="#" 
+                        class="btn btn-lg btn-danger" 
+                        data-toggle="popover" 
+                    >
+                      <span style="color: blue;"><sup>?</sup></span>
+                    </a>: <span id="graduation"></span></p>
+                    <ul class="list-inline">
                         <li class="dropdown">
                             <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                             -
@@ -58,7 +65,7 @@
                             </ul>
                           courses per term
                         </li>
-                      <li><input type="text" class="form-control" readonly>co-op / off terms</li>
+                      <li><input type="text" class="form-control">co-op / off terms</li>
                     </ul>
                 </div>
 
@@ -67,14 +74,13 @@
                     <h2 id="required">Required Courses</h2>
                     <div class="panel-group" id="accordion">
                       <div class="panel panel-default">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#cs">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#cs">
-                                <span></span>7.5 CS units
-                            </a>
+                            
+                                <span id="csunits"></span>7.5 CS units
                           </h4>
                         </div>
-                        <div id="cs" class="panel-collapse collapse">
+                        <div id="cs" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li>
@@ -187,14 +193,12 @@
                         </div>
                       </div>
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#math">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#math">
-                              4.5 Math units
-                            </a>
+                              <span id="mathunits"></span>4.5 Math units
                           </h4>
                         </div>
-                        <div id="math" class="panel-collapse collapse">
+                        <div id="math" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li>
@@ -265,18 +269,19 @@
                         </div>
                       </div>
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#mathadd">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#mathadd" id="pop" 
+                            <p><span id="mathaddunits"></span>1.5 Additional Math units
+                            <a id="note" 
                                 href="#" 
-                                class="btn btn-lg btn-danger" 
                                 data-toggle="popover" 
                             >
-                              1.5 Additional Math units<span style="color: red;">*</span>
+                              <span style="color: red;">*</span>
                             </a>
+                          </p>
                           </h4>
                         </div>
-                        <div id="mathadd" class="panel-collapse collapse">
+                        <div id="mathadd" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li class="input-group">
@@ -302,14 +307,12 @@
                         </div>
                       </div>
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#nonmath">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#nonmath">
-                              5.0 Non-math units
-                            </a>
+                              <span id="nonmathunits"></span>5.0 Non-math units
                           </h4>
                         </div>
-                        <div id="nonmath" class="panel-collapse collapse">
+                        <div id="nonmath" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li class="input-group">
@@ -347,14 +350,12 @@
                         </div>
                       </div>
                       <div class="panel panel-default template">
-                        <div class="panel-heading">
+                        <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#elective">
                           <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#elective">
-                              1.5 Elective units
-                            </a>
+                              <span id="electiveunits"></span>1.5 Elective units
                           </h4>
                         </div>
-                        <div id="elective" class="panel-collapse collapse">
+                        <div id="elective" class="panel-collapse in">
                           <div class="panel-body">
                             <ul class="list-unstyled">
                               <li class="input-group">
@@ -386,14 +387,12 @@
                     <h2 id="additional">Additional Constraints</h2>
                       <div class="panel-group" id="accordion">
                         <div class="panel panel-default">
-                          <div class="panel-heading">
+                          <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#twoof">
                             <h4 class="panel-title">
-                              <a class="accordion-toggle" data-toggle="collapse" href="#twoof">
-                                  Two of:
-                              </a>
+                                  <span id="twoofunits"></span>2 of the following:
                             </h4>
                           </div>
-                          <div id="twoof" class="panel-collapse collapse">
+                          <div id="twoof" class="panel-collapse in">
                             <div class="panel-body">
                               <ul class="list-unstyled">
                                 <li>
@@ -422,14 +421,12 @@
                           </div>
                         </div>
                         <div class="panel panel-default template">
-                          <div class="panel-heading">
+                          <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#communication">
                             <h4 class="panel-title">
-                              <a class="accordion-toggle" data-toggle="collapse" href="#communication">
-                                Two of (communications courses):
-                              </a>
+                                <span id="communicationunits"></span>2 communication courses:
                             </h4>
                           </div>
-                          <div id="communication" class="panel-collapse collapse">
+                          <div id="communication" class="panel-collapse in">
                             <div class="panel-body">
                               <ul class="list-unstyled">
                                 <li>
@@ -472,14 +469,12 @@
                           </div>
                         </div>
                         <div class="panel panel-default template">
-                          <div class="panel-heading">
+                          <div class="panel-heading accordion-toggle" data-toggle="collapse" href="#business">
                             <h4 class="panel-title">
-                              <a class="accordion-toggle" data-toggle="collapse" href="#business">
-                                Six of (business courses):
-                              </a>
+                                <span id="businessunits"></span>6 business courses:
                             </h4>
                           </div>
-                          <div id="business" class="panel-collapse collapse">
+                          <div id="business" class="panel-collapse in">
                             <div class="panel-body">
                               <ul class="list-unstyled">
                                 <li>
@@ -672,6 +667,13 @@
                     </div>
                   </div>
                 </form>
+
+                    <div id="estimatenote" style="display: none;">
+                      <p><b>Graduation Date</b><br>
+                        = (current term)<br>
+                         + (number of courses remaining / number of courses taken per a study term)<br>
+                         + (number of co-op/off terms)</p>
+                    </div>
 
                     <div id="mathaddnote" style="display: none;">
                       <p>Three additional courses labeled ACTSC, AMATH, CO, CM, PMATH, STAT, excluding the following:</p>

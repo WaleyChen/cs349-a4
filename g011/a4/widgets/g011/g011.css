@@ -29,3 +29,7 @@
 .term {
 	display: inline;
 }
+
+.panel-heading {
+	background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f5f5f5), to(#e8e8e8));
+}

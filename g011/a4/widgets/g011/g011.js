@@ -90,7 +90,128 @@ function g011(userid, htmlId) {
 $(function () {
   $('#accordion label').append("<div class='term'><button class='btn btn-sm dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown'>Term<span class='caret'></span></button><ul class='dropdown-menu pull-right'><li><a href='#'>Fall</a></li><li><a href='#'>Winter</a></li><li><a href='#'>Spring</a></li></ul><input type='text' class='form-control' placeholder='year'></div>");
 
-  $('#pop').popover({
+// Checkbox Counts
+  $('#cs').change(function() {
+    var courses = $("#cs input:checked").length;
+    
+    if(courses > 0) {
+      $('#csunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#csunits').text(""); 
+    }
+  });
+
+  $('#math').change(function() {
+    var courses = $("#math input:checked").length;
+    
+    if(courses > 0) {
+      $('#mathunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#mathunits').text(""); 
+    }
+  });
+
+  $('#mathadd').change(function() {
+    var courses = $("#mathadd input:checked").length;
+    
+    if(courses > 0) {
+      $('#mathaddunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#mathaddunits').text(""); 
+    }
+  });
+
+  $('#nonmath').change(function() {
+    var courses = $("#nonmath input:checked").length;
+    
+    if(courses > 0) {
+      $('#nonmathunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#nonmathunits').text(""); 
+    }
+  });
+
+
+  $('#elective').change(function() {
+    var courses = $("#elective input:checked").length;
+    
+    if(courses > 0) {
+      $('#electiveunits').text(courses/2 + "/ ");
+    }
+    else {
+      $('#electiveunits').text(""); 
+    }
+  });
+
+  $('#twoof').change(function() {
+    var checkboxes = $("#twoof input[type='checkbox']");
+    var courses = $("#twoof input:checked").length;
+    var max = 2;
+    
+    if(courses > 0) {
+      $('#twoofunits').text(courses + "/ ");
+    }
+    else {
+      $('#twoofunits').text(""); 
+    }
+
+    checkboxes.change(function(){
+        var current = checkboxes.filter(':checked').length;
+        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+    });
+  });
+
+  $('#communication').change(function() {
+    var checkboxes = $("#communication input[type='checkbox']");
+    var courses = $("#communication input:checked").length;
+    var max = 2;
+    
+    if(courses > 0) {
+      $('#communicationunits').text(courses + "/ ");
+    }
+    else {
+      $('#communicationunits').text(""); 
+    }
+
+    checkboxes.change(function(){
+        var current = checkboxes.filter(':checked').length;
+        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+    });
+  });  
+
+  $('#business').change(function() {
+    var checkboxes = $("#business input[type='checkbox']");
+    var courses = $("#business input:checked").length;
+    var max = 6;
+
+    if(courses > 0) {
+      $('#businessunits').text(courses + "/ ");
+    }
+    else {
+      $('#businessunits').text(""); 
+    }
+
+    checkboxes.change(function(){
+        var current = checkboxes.filter(':checked').length;
+        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+    });
+  });  
+
+//Popovers
+  $('#estimatedate').popover({
+    html: true,
+    trigger: 'hover', 
+    placement: 'right',
+    content: function() {
+      return $('#estimatenote').html();
+    }
+  });
+
+  $('#note').popover({
     html: true,
     trigger: 'hover', 
     placement: 'right',
