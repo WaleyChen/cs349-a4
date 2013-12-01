@@ -180,7 +180,7 @@
       "</div>"
     ],
 
-    "container": [ "<div class=\"g011-container\"><form role=\"form\"></form></div>" ],
+    "container": [ "<div class=\"g011_container\"><form role=\"form\"></form></div>" ],
 
     "communicationCourses": [
       "<div class=\"panel-heading\">",
@@ -548,8 +548,7 @@
         "<div id=\"estimate\">",
             "<p>Estimated Graduation Date:<span id=\"graduation\"></span></p>",
             "<ul class=\"list-unstyled\">",
-              "<li><input type=\"text\" class=\"form-control\" readonly>co-op / off terms</li>",
-              "<li><input type=\"text\" class=\"form-control\" readonly>co-op / off terms</li>",
+              "<li># of Courses per Study Term: <input id=\"g011-courses-per-study-term\" type=\"text\" class=\"form-control\"># of Co-op/Off Terms: <input id=\"g011-co-op-off-terms-count\" type=\"text\" class=\"form-control\"> </li>",
             "</ul>",
         "</div>",
         "<hr>"
@@ -742,7 +741,7 @@
     ],
 
     "requiredCourses": [
-        "<div id=\"required-courses\">",
+        "<div id=\"g011_required-courses\">",
             "<h4 id=\"required\">Required Courses</h4>",
             "<div class=\"panel-group\" id=\"accordion\">",
                 "<div class=\"panel panel-default\">",

@@ -1,8 +1,36 @@
+  $('#communication').change(function() {
+    var checkboxes = $("#communication input[type='checkbox']");
+    var courses = $("#communication input:checked").length;
+    var max = 2;
+    
+    if(courses > 0) {
+      $('#communicationunits').text(courses + "/ ");
+    }
+    else {
+      $('#communicationunits').text(""); 
+    }
+
+    checkboxes.change(function(){
+        var current = checkboxes.filter(':checked').length;
+        checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+    });
+  });  
+
+- count of units
+- esimated graduation date functionality
+- prerequisite checking (MAJOR)
+- restriciting terms offered in the dropdown
+- mouse click on headers
+
 - popover explanation of graduation date
-- counts of units
+- comment on your code
 
 - jquery call to verify the term exists
 - jquery call to check prereqs are met
+
+- you still have extra requiments missing (MUST DO)
+ 
+- finish up the read me (MUST DO)
 
 MUST FINISH
 - estimating when the user will finish their degree

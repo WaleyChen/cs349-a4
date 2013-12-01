@@ -197,7 +197,8 @@ function g011(userId, htmlId) {
                 if (offeringsString == '') { offeringsString += 'Spring' } else { offeringsString += ', Spring' }
               }
 
-              $(that).parent().append('<span class=\'glyphicon glyphicon-info-sign\' data-container=\"body\" data-toggle=\"popover\" data-trigger=\"hover\" data-delay=\'{ \"hide\": \"3000\" }\' data-placement=\"right\" data-content=\"' + $(that).val() + ' is offered ' + offeringsString + '.\"></span>');
+              $(that).parent().append('<span class=\'glyphicon glyphicon-info-sign\' data-container=\"body\" data-toggle=\"popover\" data-trigger=\"hover\" data-delay=\'{ \"hide\": \"4500\" }\' data-placement=\"right\" data-content=\"' + 
+                  $(that).val() + ' is offered ' + offeringsString + '.\n\n' + course.prereqDesc +'\"></span>');
               $(that).parent().children().last().popover('toggle');
               $(that).parent().children().last().popover('toggle');
             }
@@ -280,24 +281,28 @@ function g011(userId, htmlId) {
 
       $(htmlId).html(templates.container);
 
-      $('#g011 .g011-container').append(templates.header);
-      $('#g011 .g011-container').append(templates.estimateGraduation);
+      $('.g011_container').append(templates.header);
+      $('.g011_container').append(templates.estimateGraduation);
 
-      $('#g011 .g011-container').append(templates.requiredCourses);
-      $('#g011 #required-courses .panel').html(templates.csCourses);
-      $('#g011 #required-courses .panel').append(templates.mathCourses);
-      $('#g011 #required-courses .panel').append(templates.nonMathCourses);
-      $('#g011 #required-courses .panel').append(templates.electiveCourses);
+      $('.g011_container').append(templates.requiredCourses);
+      $('#g011_required-courses .panel').html(templates.csCourses);
+      $('#g011_required-courses .panel').append(templates.mathCourses);
+      $('#g011_required-courses .panel').append(templates.nonMathCourses);
+      $('#g011_required-courses .panel').append(templates.electiveCourses);
 
-      $('#g011 .g011-container').append(templates.additionalConstraints);
-      $('#g011 #g011_additional-contraint .panel').html(templates.csBreadth1Courses);
-      $('#g011 #g011_additional-contraint .panel').append(templates.csBreadth2Courses);
-      $('#g011 #g011_additional-contraint .panel').append(templates.communicationCourses);
-      $('#g011 #g011_additional-contraint .panel').append(templates.businessCourses);
+      $('.g011_container').append(templates.additionalConstraints);
+      $('#g011_additional-contraint .panel').html(templates.csBreadth1Courses);
+      $('#g011_additional-contraint .panel').append(templates.csBreadth2Courses);
+      $('#g011_additional-contraint .panel').append(templates.communicationCourses);
+      $('#g011_additional-contraint .panel').append(templates.businessCourses);
 
-      $('#g011 .g011-container').append(templates.footer);
+      $('.g011_container').append(templates.footer);
 
       model.loadCourses();
+      $('#g011-cs-breadth-2 input').click(function() {
+        alert($('#g011-cs-breadth-2 input:checked').length);
+      });
+      // $('#g011-cs-breadth-2')
     }
   );
 
