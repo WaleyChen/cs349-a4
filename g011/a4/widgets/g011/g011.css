@@ -26,7 +26,15 @@
 	margin-right: 10px;
 }
 
-.g011_term, .g011_courses {
+#g011_estimate button {
+   margin-right: 10px;
+ }
+ 
+ #g011_estimate li {
+   margin-bottom: 10px;
+ }
+ 
+ .g011_term, .g011_courses {
 	height: 25px;
 	width: 80px;
 	display: inline;
