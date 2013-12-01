@@ -11,7 +11,18 @@ dropdown.checkbox button {
 	padding: 3px 10px;
 }
 
-.g011-course { width: 82px; }
+.g011_course { 
+	display: inline-block; 
+	width: 105px; 
+}
+#g011 .glyphicon {
+	font-size: 19px;
+	top: 5px;
+}
+.g011_term-select { 
+	display: inline-block;
+	width: 75px; 
+}
 
 #estimate input {
 	width: 45px;

@@ -1,6 +1,7 @@
 function g011(userId, htmlId) {
   "use strict";
   var templates = {};
+  var waterlooAPIKey = '2382b86bf4cfde897e02a8fa55a02d31';
 
   var model = {
     views: [],
@@ -70,99 +71,142 @@ function g011(userId, htmlId) {
     loadCourses: function() {
       var that = this;
 
-      $.getJSON("https://cs349.student.cs.uwaterloo.ca:9410/api/v1/student/stdGrades/" + userId,
-        function (d) {
+      $.getJSON("https://cs349.student.cs.uwaterloo.ca:9410/api/v1/student/stdGrades/" + userId, function (d) {
+        var courses = d.result.courses;
+        var courseCode;
+        var courseCodeSelector;
+        var courseNumber;
+        var grade;
+        var rawGrade;
+        var subjectCode;
+        var thirdOrFourthYearCSCourseCount = 0;
 
-          var courses = d.result.courses;
-          var courseCode;
-          var courseCodeSelector;
-          var courseNumber;
-          var grade;
-          var rawGrade;
-          var subjectCode;
-          var thirdOrFourthYearCSCourseCount = 0;
+        for (var i = 0; i < courses.length; i++) {
+          courseNumber = courses[i].catalog;
 
-          for (var i = 0; i < courses.length; i++) {
-            courseNumber = courses[i].catalog;
+          subjectCode = courses[i].subjectCode;
+          courseCode = subjectCode + courseNumber;
 
-            subjectCode = courses[i].subjectCode;
-            courseCode = subjectCode + courseNumber;
+          rawGrade = courses[i].courseGrade;
+          grade = parseInt(rawGrade);
 
-            rawGrade = courses[i].courseGrade;
-            grade = parseInt(rawGrade);
+          // add courseCode to appropriate checkbox if the student is currently taking 
+          // the course
+          if (rawGrade == "") {
+            if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && thirdOrFourthYearCSCourseCount != 3) {
+              that.markCurrentlyTaking('.third-or-fourth-year-CS-course', courseCode);
+              that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
 
-            // add courseCode to appropriate checkbox if the student is currently taking 
-            // the course
-            if (rawGrade == "") {
-              if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && thirdOrFourthYearCSCourseCount != 3) {
-                that.markCurrentlyTaking('.third-or-fourth-year-CS-course', courseCode);
-                that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
-
-                thirdOrFourthYearCSCourseCount++;
-              } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
-                that.markCurrentlyTaking('.fourth-year-CS-course', courseCode);
-                that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
-              } else {
-                courseCodeSelector = "#g011 ." + courseCode;
-                $(courseCodeSelector).first().addClass("g011-cur-course");
-              }
+              thirdOrFourthYearCSCourseCount++;
+            } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
+              that.markCurrentlyTaking('.fourth-year-CS-course', courseCode);
+              that.markCurrentlyTaking('#g011-cs-breadth-1 .' + courseCode, courseCode);
+            } else {
+              courseCodeSelector = "#g011 ." + courseCode;
+              $(courseCodeSelector).first().addClass("g011-cur-course");
             }
-
-            // select course if the student passed the course
-            // pass == number grade assigned and grade >=50
-            if (!isNaN(grade) && parseInt(grade) >= 50) {
-              // excludes CS341 and CS350 however since they have their own checkbox
-              if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && 
-                   ( courseNumber != 341 && courseNumber != 350 ) && 
-                   thirdOrFourthYearCSCourseCount != 3 ) {
-                courseCodeSelector = "#g011 .third-or-fourth-year-CS-course:not(:checked)";
-                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
-                thirdOrFourthYearCSCourseCount++;
-              } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
-                courseCodeSelector = "#g011 .fourth-year-CS-course:not(:checked)";
-                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
-              } else if ( that.isSixthYearCSCourse(subjectCode, courseNumber) ) {
-                courseCodeSelector = "#g011 .sixth-year-CS-course:not(:checked)";
-                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
-              } else if ( that.isSeventhYearCSCourse(subjectCode, courseNumber) ) {
-                courseCodeSelector = "#g011 .seventh-year-CS-course:not(:checked)";
-                $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
-              } else if (that.isNonMathCourse(subjectCode)) {
-                courseCodeSelector = "#g011 .g011-non-math-course:not(:checked)";
-                $(courseCodeSelector).first().parent().append(courseCode);
-              } else {
-                courseCodeSelector = "#g011 ." + courseCode;
-              }
-
-              // select a checkbox that matches a specific course code, if no such checkbox exists,
-              // then it's a elective
-              if ($(courseCodeSelector).length) {
-                $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
-              } else {
-                courseCodeSelector = "#g011 .g011-elective-course:not(:checked)";
-                $(courseCodeSelector).first().parent().append(courseCode);
-                $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
-              }
-
-              $("#g011 ." + courseCode).prop('checked', true).attr("disabled", true);
-              courses[courseCode] = "";
-            }
-
-            console.log(courseCode);
-            console.log(that.isThirdOrFourthYearCSCourse(courseCode, courseNumber));
-            console.log(grade);
-            console.log(parseInt(grade) >= 50);
           }
 
-          $('#g011 .g011-multi-courses:not(:checked):not(.g011-cur-course)').parent().append(
-            '<input class=\'g011-course\' placeholder=\'coursecode\' type=\'text\'>' + 
-          );
-        }).fail(function( jqxhr, textStatus, error ) {
-          var err = textStatus + ", " + error;
-          console.log( "Request Failed: " + err );
-        }
-      );
+          // select course if the student passed the course
+          // pass == number grade assigned and grade >=50
+          if (!isNaN(grade) && parseInt(grade) >= 50) {
+            // excludes CS341 and CS350 however since they have their own checkbox
+            if ( that.isThirdOrFourthYearCSCourse(subjectCode, courseNumber) && 
+                 ( courseNumber != 341 && courseNumber != 350 ) && 
+                 thirdOrFourthYearCSCourseCount != 3 ) {
+              courseCodeSelector = "#g011 .third-or-fourth-year-CS-course:not(:checked)";
+              $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+              thirdOrFourthYearCSCourseCount++;
+            } else if ( that.isFourthYearCSCourse(subjectCode, courseNumber) ) {
+              courseCodeSelector = "#g011 .fourth-year-CS-course:not(:checked)";
+              $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+            } else if ( that.isSixthYearCSCourse(subjectCode, courseNumber) ) {
+              courseCodeSelector = "#g011 .sixth-year-CS-course:not(:checked)";
+              $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+            } else if ( that.isSeventhYearCSCourse(subjectCode, courseNumber) ) {
+              courseCodeSelector = "#g011 .seventh-year-CS-course:not(:checked)";
+              $(courseCodeSelector).first().parent().append(" - (" + courseCode + ")");
+            } else if (that.isNonMathCourse(subjectCode)) {
+              courseCodeSelector = "#g011 .g011-non-math-course:not(:checked)";
+              $(courseCodeSelector).first().parent().append(courseCode);
+            } else {
+              courseCodeSelector = "#g011 ." + courseCode;
+            }
 
+            // select a checkbox that matches a specific course code, if no such checkbox exists,
+            // then it's a elective
+            if ($(courseCodeSelector).length) {
+              $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
+            } else {
+              courseCodeSelector = "#g011 .g011-elective-course:not(:checked)";
+              $(courseCodeSelector).first().parent().append(courseCode);
+              $(courseCodeSelector).first().prop('checked', true).attr("disabled", true);
+            }
+
+            $("#g011 ." + courseCode).prop('checked', true).attr("disabled", true);
+            courses[courseCode] = "";
+          }
+
+          console.log(courseCode);
+          console.log(that.isThirdOrFourthYearCSCourse(courseCode, courseNumber));
+          console.log(grade);
+          console.log(parseInt(grade) >= 50);
+        }
+
+        $('#g011 .g011-multi-courses:not(:checked):not(.g011-cur-course)').parent().append(
+          '&nbsp; <input class=\'form-control g011_course\' placeholder=\'CourseCode\' type=\'text\'> &nbsp;' + 
+          '<select class="form-control g011_term-select"> <option>Term</option> <option>Fall</option> <option>Winter</option> <option>Spring</option> </select> &nbsp;' +
+          '<select class="form-control g011_term-select"> <option>Year</option> <option>2014</option> <option>2015</option> <option>2016</option> <option>2017</option> <option>2018</option> </select> &nbsp;'
+        );
+
+        $('#g011 input.g011_course').keyup(function() {
+          var that = this;
+          $.getJSON('http://api.uwaterloo.ca/public/v1/?key=' + waterlooAPIKey + '&service=CourseInfo&q=' + $(this).val() + '&output=json' + userId, function (d) {
+            if($(that).parent().children().last().hasClass('glyphicon')) {
+              $(that).parent().children().last().remove();
+            }
+
+            if (d.response.data.result === undefined) {
+              $(that).next().removeClass('FALL').removeClass('WINTER').removeClass('SPRING');
+
+              var lastSibling = $(that).parent().last().children();
+              
+              if ($(that).val() != '') {
+                $(that).parent().append(
+                  '<span class=\"glyphicon glyphicon-remove-circle\" data-container=\"body\" data-toggle=\"popover\" data-trigger=\"hover\" data-delay=\'{ \"hide\": \"2000\" }\' data-placement=\"right\" data-content=\"Invalid course code.\"></span>'
+                )
+
+                $(that).parent().children().last().popover('toggle');
+                $(that).parent().children().last().popover('toggle');
+              }
+            } else {
+              var course = d.response.data.result[0];
+              var offerings = course.noteDesc.substring(course.noteDesc.indexOf('Offered:'));
+              var offeringsString = "";
+
+              if (offerings.indexOf('F') != -1) { 
+                $(that).next().addClass('FALL');
+                offeringsString += 'Fall'
+              }
+              if (offerings.indexOf('W') != -1) { 
+                $(that).next().addClass('WINTER'); 
+                if (offeringsString == '') { offeringsString += 'Winter' } else { offeringsString += ', Winter' }
+              }
+              if (offerings.indexOf('S') != -1) { 
+                $(that).next().addClass('SPRING'); 
+                if (offeringsString == '') { offeringsString += 'Spring' } else { offeringsString += ', Spring' }
+              }
+
+              $(that).parent().append('<span class=\'glyphicon glyphicon-info-sign\' data-container=\"body\" data-toggle=\"popover\" data-trigger=\"hover\" data-delay=\'{ \"hide\": \"3000\" }\' data-placement=\"right\" data-content=\"' + $(that).val() + ' is offered ' + offeringsString + '.\"></span>');
+              $(that).parent().children().last().popover('toggle');
+              $(that).parent().children().last().popover('toggle');
+            }
+          });
+        });
+      }).fail(function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
+      });
     },
 
     // create data structures for courses
@@ -236,7 +280,7 @@ function g011(userId, htmlId) {
 
       $(htmlId).html(templates.container);
 
-      $('#g011 .g011-container').html(templates.header);
+      $('#g011 .g011-container').append(templates.header);
       $('#g011 .g011-container').append(templates.estimateGraduation);
 
       $('#g011 .g011-container').append(templates.requiredCourses);
@@ -246,10 +290,10 @@ function g011(userId, htmlId) {
       $('#g011 #required-courses .panel').append(templates.electiveCourses);
 
       $('#g011 .g011-container').append(templates.additionalConstraints);
-      $('#g011 #additional-constraints .panel').html(templates.csBreadth1Courses);
-      $('#g011 #additional-constraints .panel').append(templates.csBreadth2Courses);
-      $('#g011 #additional-constraints .panel').append(templates.communicationCourses);
-      $('#g011 #additional-constraints .panel').append(templates.businessCourses);
+      $('#g011 #g011_additional-contraint .panel').html(templates.csBreadth1Courses);
+      $('#g011 #g011_additional-contraint .panel').append(templates.csBreadth2Courses);
+      $('#g011 #g011_additional-contraint .panel').append(templates.communicationCourses);
+      $('#g011 #g011_additional-contraint .panel').append(templates.businessCourses);
 
       $('#g011 .g011-container').append(templates.footer);
 

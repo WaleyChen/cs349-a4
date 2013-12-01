@@ -1,10 +1,17 @@
+- popover explanation of graduation date
+- counts of units
+
+- jquery call to verify the term exists
+- jquery call to check prereqs are met
+
 MUST FINISH
 - estimating when the user will finish their degree
 - being able to pick a course and indicate whether the prerequisites are met for course chosen
 - being able to pick a course, terms offered
 
-- stress test that your course loading works
 
+- stress test that your course loading works
+- comment your code
 - current course input for additional constraints
 
 - count the courses
