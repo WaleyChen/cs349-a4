@@ -88,75 +88,76 @@ function g011(userid, htmlId) {
 }
 
 $(function () {
-  $('#accordion label').append("<div class='term'><button class='btn btn-sm dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown'>Term<span class='caret'></span></button><ul class='dropdown-menu pull-right'><li><a href='#'>Fall</a></li><li><a href='#'>Winter</a></li><li><a href='#'>Spring</a></li></ul><input type='text' class='form-control' placeholder='year'></div>");
+  // $('#accordion label').append("<div class='term'><button class='btn btn-sm dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown'>Term<span class='caret'></span></button><ul class='dropdown-menu pull-right'><li><a href='#'>Fall</a></li><li><a href='#'>Winter</a></li><li><a href='#'>Spring</a></li></ul><input type='text' class='form-control' placeholder='year'></div>");
+  $('#accordion label').append("<span class='g011coursedate'><select class='form-control g011term'><option>Term</option><option value='fall'>Fall</option><option value='winter'>Winter</option><option value='spring'>Spring</option></select><input type='text' class='form-control' placeholder='year'></span>");
 
 // Checkbox Counts
-  $('#cs').change(function() {
-    var courses = $("#cs input:checked").length;
+  $('#g011cs').change(function() {
+    var courses = $("#g011cs input:checked").length;
     
     if(courses > 0) {
-      $('#csunits').text(courses/2 + "/ ");
+      $('#g011csunits').text(courses/2 + "/ ");
     }
     else {
-      $('#csunits').text(""); 
+      $('#g011csunits').text(""); 
     }
   });
 
-  $('#math').change(function() {
-    var courses = $("#math input:checked").length;
+  $('#g011math').change(function() {
+    var courses = $("#g011math input:checked").length;
     
     if(courses > 0) {
-      $('#mathunits').text(courses/2 + "/ ");
+      $('#g011mathunits').text(courses/2 + "/ ");
     }
     else {
-      $('#mathunits').text(""); 
+      $('#g011mathunits').text(""); 
     }
   });
 
-  $('#mathadd').change(function() {
-    var courses = $("#mathadd input:checked").length;
+  $('#g011mathadd').change(function() {
+    var courses = $("#g011mathadd input:checked").length;
     
     if(courses > 0) {
-      $('#mathaddunits').text(courses/2 + "/ ");
+      $('#g011mathaddunits').text(courses/2 + "/ ");
     }
     else {
-      $('#mathaddunits').text(""); 
+      $('#g011mathaddunits').text(""); 
     }
   });
 
-  $('#nonmath').change(function() {
-    var courses = $("#nonmath input:checked").length;
+  $('#g011nonmath').change(function() {
+    var courses = $("#g011nonmath input:checked").length;
     
     if(courses > 0) {
-      $('#nonmathunits').text(courses/2 + "/ ");
+      $('#g011nonmathunits').text(courses/2 + "/ ");
     }
     else {
-      $('#nonmathunits').text(""); 
+      $('#g011nonmathunits').text(""); 
     }
   });
 
 
-  $('#elective').change(function() {
-    var courses = $("#elective input:checked").length;
+  $('#g011elective').change(function() {
+    var courses = $("#g011elective input:checked").length;
     
     if(courses > 0) {
-      $('#electiveunits').text(courses/2 + "/ ");
+      $('#g011electiveunits').text(courses/2 + "/ ");
     }
     else {
-      $('#electiveunits').text(""); 
+      $('#g011electiveunits').text(""); 
     }
   });
 
-  $('#twoof').change(function() {
-    var checkboxes = $("#twoof input[type='checkbox']");
-    var courses = $("#twoof input:checked").length;
+  $('#g011twoof').change(function() {
+    var checkboxes = $("#g011twoof input[type='checkbox']");
+    var courses = $("#g011twoof input:checked").length;
     var max = 2;
     
     if(courses > 0) {
-      $('#twoofunits').text(courses + "/ ");
+      $('#g011twoofunits').text(courses + "/ ");
     }
     else {
-      $('#twoofunits').text(""); 
+      $('#g011twoofunits').text(""); 
     }
 
     checkboxes.change(function(){
@@ -165,16 +166,16 @@ $(function () {
     });
   });
 
-  $('#communication').change(function() {
-    var checkboxes = $("#communication input[type='checkbox']");
-    var courses = $("#communication input:checked").length;
+  $('#g011communication').change(function() {
+    var checkboxes = $("#g011communication input[type='checkbox']");
+    var courses = $("#g011communication input:checked").length;
     var max = 2;
     
     if(courses > 0) {
-      $('#communicationunits').text(courses + "/ ");
+      $('#g011communicationunits').text(courses + "/ ");
     }
     else {
-      $('#communicationunits').text(""); 
+      $('#g011communicationunits').text(""); 
     }
 
     checkboxes.change(function(){
@@ -183,16 +184,16 @@ $(function () {
     });
   });  
 
-  $('#business').change(function() {
-    var checkboxes = $("#business input[type='checkbox']");
-    var courses = $("#business input:checked").length;
+  $('#g011business').change(function() {
+    var checkboxes = $("#g011business input[type='checkbox']");
+    var courses = $("#g011business input:checked").length;
     var max = 6;
 
     if(courses > 0) {
-      $('#businessunits').text(courses + "/ ");
+      $('#g011businessunits').text(courses + "/ ");
     }
     else {
-      $('#businessunits').text(""); 
+      $('#g011businessunits').text(""); 
     }
 
     checkboxes.change(function(){
@@ -202,21 +203,32 @@ $(function () {
   });  
 
 //Popovers
-  $('#estimatedate').popover({
+  $('#g011estimatedate').popover({
     html: true,
     trigger: 'hover', 
     placement: 'right',
     content: function() {
-      return $('#estimatenote').html();
+      return $('#g011estimatenote').html();
     }
   });
 
-  $('#note').popover({
+  $('#g011note').popover({
     html: true,
     trigger: 'hover', 
     placement: 'right',
     content: function() {
-      return $('#mathaddnote').html();
+      return $('#g011mathaddnote').html();
     }
   });
+
+  // $("input[type='checkbox']").change(function(){
+  //   var coursedate = parent().children('.g011coursedate');
+  //   console.log(coursedate);
+  //   if(coursedate.css('display') == 'none') {
+  //     coursedate.css('display', 'inline');
+  //   }
+  //   else {
+  //     coursedate.css('display', 'none');
+  //   }
+  // });
 });
