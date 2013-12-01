@@ -548,7 +548,7 @@
         "<div id=\"estimate\">",
             "<p>Estimated Graduation Date:<span id=\"graduation\"></span></p>",
             "<ul class=\"list-unstyled\">",
-              "<li># of Courses per Study Term: <input id=\"g011-courses-per-study-term\" type=\"text\" class=\"form-control\"># of Co-op/Off Terms: <input id=\"g011-co-op-off-terms-count\" type=\"text\" class=\"form-control\"> </li>",
+              "<li># of Courses per Study Term: <input id=\"g011-courses-per-study-term\" type=\"text\" class=\"form-control\">&nbsp; # of Co-op/Off Terms: <input id=\"g011-co-op-off-terms-count\" type=\"text\" class=\"form-control\"> </li>",
             "</ul>",
         "</div>",
         "<hr>"

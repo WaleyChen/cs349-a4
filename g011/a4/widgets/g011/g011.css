@@ -9,10 +9,17 @@
 	display: inline-block; 
 	width: 105px; 
 }
+
+#g011-courses-per-study-term, #g011-co-op-off-terms-count {
+	display: inline-block;
+	width: 35px;
+}
+
 #g011 .glyphicon {
 	font-size: 19px;
 	top: 5px;
 }
+
 .g011_term-select { 
 	display: inline-block;
 	width: 75px; 
