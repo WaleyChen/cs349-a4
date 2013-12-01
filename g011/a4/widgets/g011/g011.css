@@ -19,22 +19,14 @@
 }
 
 
-#g011estimate input {
+#g011_estimate input {
 	width: 45px;
 	height: 25px;
 	display: inline;
 	margin-right: 10px;
 }
 
-#g011estimate button {
-	margin-right: 10px;
-}
-
-#g011estimate li {
-	margin-bottom: 10px;
-}
-
-.g011term, .g011courses {
+.g011_term, .g011_courses {
 	height: 25px;
 	width: 80px;
 	display: inline;
@@ -43,7 +35,7 @@
 	padding: 3px 5px;
 }
 
-.g011courses {
+.g011_courses {
 	width: 50px;
 }
 
