@@ -219,4 +219,15 @@ $(function () {
       return $('#mathaddnote').html();
     }
   });
+
+  $("input[type='checkbox']").change(function(){
+    var coursedate = $(this).parent().children('.g011coursedate');
+    console.log(coursedate);
+    if(coursedate.css('display') == 'none') {
+      coursedate.css('display', 'inline');
+    }
+    else {
+      coursedate.css('display', 'none');
+    }
+  });
 });
